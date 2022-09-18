@@ -16,15 +16,14 @@ public class JpaMain {
         tx.begin();
 
         try{
+            Member member = new Member();
+            member.setId(1L);
+            member.setUsername("A");
+            member.setRoleType(RoleType.USER);
 
-            Member member1 = new Member(200L, "A");
-            em.persist(member1);
+            em.persist(member);
 
-            em.flush();
-
-            System.out.println("===========");
             tx.commit();
-
         } catch (Exception e) {
             tx.rollback();
         } finally {
